@@ -11,7 +11,23 @@ five.Board().on("ready", function() {
   var maxValue = 811;
   var colRange = 6;
   var offset   = maxValue / colRange;
+  var led = new five.Led(11);
+  var led2 = new five.Led(6);
 
+  var myfirebaseRef = new Firebase(
+  // fictional URL, replace it with your own from Firebase
+  	"https://wstl.firebaseio.com/"
+  );  
+  myfirebaseRef.on('child_changed', function(childSnapshot){
+  	var light = childSnapshot.val()['led'];
+  	console.log(light);
+  	if(light == "true") {
+  		led.pulse(500);
+  		firebaseRef.update({"led": "pulsing"});
+  	} else if(light == "false") {
+  		led.fadeOut();
+  	}
+  });
   // Create a new pot instance
   var pot = new five.Sensor({
     pin: "A0",
@@ -27,7 +43,12 @@ five.Board().on("ready", function() {
     var self = this.value;
     // Print pot value 
     console.log(self);
-    firebaseRef.set({"value": self});
+    firebaseRef.update({"value": self});
+    if(self > 148 || self < 130) {
+    	led2.fadeIn();
+    	console.log("!");
+    }
+    else led2.fadeOut();
  //    // Map dynamic color brightness to pot value
  //    // RED - MAGENTA - BLUE
  //    var redDec   = Math.round(five.Fn.map(self, offset, offset*2, 255, 0));
