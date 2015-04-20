@@ -1,31 +1,34 @@
 var Firebase = require("firebase");
 var five = require("johnny-five");
-
 // Create a new reference of Firebase db
+
+var counter = 0;
 var firebaseRef = new Firebase(
   // fictional URL, replace it with your own from Firebase
   "https://wstl.firebaseio.com/Blow"
 );
-
 five.Board().on("ready", function() {
   var maxValue = 811;
   var colRange = 6;
   var offset   = maxValue / colRange;
   var led = new five.Led(11);
   var led2 = new five.Led(6);
-
   var myfirebaseRef = new Firebase(
   // fictional URL, replace it with your own from Firebase
   	"https://wstl.firebaseio.com/"
   );  
   myfirebaseRef.on('child_changed', function(childSnapshot){
   	var light = childSnapshot.val()['led'];
-  	console.log(light);
+  	//console.log(light);
   	if(light == "true") {
-  		led.pulse(500);
-  		firebaseRef.update({"led": "pulsing"});
-  	} else if(light == "false") {
-  		led.fadeOut();
+  		led.pulse(100);
+  		counter++;
+  		//console.log(counter);
+  		if(counter > 5){
+  			led.fadeOut();
+  			firebaseRef.update({"led": "false"});
+  			counter = 0;
+  		}
   	}
   });
   // Create a new pot instance
@@ -33,20 +36,17 @@ five.Board().on("ready", function() {
     pin: "A0",
     freq: 250
   });
-
   // Create a new led array based on pin number
   var ledArray = new five.Led.Array([9, 10, 11]);
-
   // Listen on data change
   pot.on("data", function() {
-
     var self = this.value;
     // Print pot value 
     console.log(self);
     firebaseRef.update({"value": self});
-    if(self > 148 || self < 130) {
+    if(self < 260 || self > 700) {
     	led2.fadeIn();
-    	console.log("!");
+    	//console.log("!");
     }
     else led2.fadeOut();
  //    // Map dynamic color brightness to pot value
@@ -59,7 +59,6 @@ five.Board().on("ready", function() {
  //    // GREEN - YELLOW - RED
  //    var greenDec = Math.round(five.Fn.map(self, offset*5, offset*6, 255, 0));
  //    var redInc   = Math.round(five.Fn.map(self, offset*4, offset*5, 0, 255));
-
  //    // Adjusting color brightness conditionally based on 
  //    // the location of the pot output value.
  //    switch (true) {

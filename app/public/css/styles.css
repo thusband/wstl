@@ -1,0 +1,253 @@
+html{
+	height: 100%;
+	margin: 0px;
+	min-height: 0px !important;
+}
+
+body {
+	background-color: #7CBDD6;
+	text-align: center;
+	font-family: 'Dosis', sans-serif;
+	margin: 0;
+	height: 100%;
+	min-height: 0px !important;
+}
+
+.thumb{
+	background: url(../images/map-bubble-png.png) no-repeat;
+	background-size: cover;
+	width: 80%;
+	height: 450px;
+	/*border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;  
+	-khtml-border-radius: 50%;
+    */overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    /*border-style: solid;
+    border-width: 5px;
+    border-color: #398096;*/
+    max-width: 450px;
+    position: relative;
+    z-index: 200;
+}
+
+.thumb-ripple{
+	width: 80%;
+	height:450px;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-khtml-border-radius: 50%;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #398096;
+    max-width: 450px;
+    top:90px;
+    left:0;
+    right:0;
+    position: absolute;
+    z-index: 100;
+    opacity: 0;
+}
+
+#whistle{
+	background: url(../images/whistle.png) no-repeat;
+	background-size: contain;
+	display: block;
+	width: 30px;
+	height: 30px;
+	z-index: 1000;
+	position: absolute;
+	left:0;
+	right: 0;
+	margin-right: auto;
+	margin-left: auto;
+	opacity: 0;
+	top: 100px;
+}
+
+#ripple4{
+	background: #FFF;
+	border-color: #FFF;
+	-moz-box-shadow: 0 0 20px 20px #FFF;
+	-webkit-box-shadow: 0 0 20px 20px #FFF;
+	box-shadow: 0 0 20px 20px #FFF;
+	z-index: 10;
+}
+
+#ripple5{
+	border-color: #7CBDD6;
+	border-width: 100px;
+	margin-top: -100px;
+	opacity: 1;
+	z-index: -1;
+}
+
+#ripple6{
+	margin-top: -5px;
+	opacity: 1;
+	z-index: 7;
+}
+
+.fullscreen{
+    position:fixed;
+    width:100%;
+    height:100% !important;
+    top: 0px;
+    left:0px;
+    z-index:1000;
+}
+
+#testbutton {
+	position: absolute;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;  
+    overflow: hidden;
+}
+
+.canvasthumb{
+	width: 100%;
+	height: 100%; 
+	margin: 0; 
+	padding: 0;
+    border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;  
+	-khtml-border-radius: 50%;
+    overflow: hidden;
+}
+.canvasfull{
+	width: 100%;
+	height: 100% !important; 
+	margin: 0; 
+	padding: 0;
+	top: 0px;
+}
+
+#closebutton{
+	width:50px;
+	height:50px;
+	position: absolute;
+	bottom: 30px;
+	right: calc(50% - 25px);
+	z-index: 999999999;
+}
+
+#closebutton img{
+	width: 100%;
+	height: 100%;
+}
+
+#fullbanner{
+	width: 100%;
+	height: 100px;
+	position: absolute;
+	background-color: #7CBDD6;
+	z-index: 999999999999;
+}
+
+.logo{
+	width: 70px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	background-color: #7CBDD6;
+	z-index: 999999999;
+}
+
+.logo img{
+	width: 100%;
+}
+
+.all{
+	margin-top: -15px;
+	opacity: 0;
+}
+
+#alert{
+	margin-top: 0px;
+}
+
+#alert h2{
+	font-weight: 300;
+	font-size: 20px;
+	margin: 0px;
+	letter-spacing: 1px;
+}
+
+#alert h2 img{
+  	height: 20px;
+  	margin-right: 15px;
+}
+
+.hidden{
+	display:none;
+}
+
+#tick2{
+	font-size:20px;
+	color:#398096;
+	font-family: 'Dosis', sans-serif;
+	font-weight:300;
+	letter-spacing: 1px;
+	margin: 10px;
+	margin-top: -15px;
+	display: none;
+}
+#tick3{
+	font-size:20px;
+	color:#398096;
+	font-family: 'Dosis', sans-serif;
+	font-weight:300;
+	letter-spacing: 1px;
+	margin: 10px;
+}
+
+.section {
+  padding-top: 10px;
+}
+
+.button {
+  width: 180px;
+  height: 50px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 2.9em;
+  cursor: pointer;
+  position: relative;
+}
+
+.button--denim {
+  color: #398096;
+  background: #7CBDD6;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #398096;
+  box-shadow: 0 4px #398096;
+}
+
+.button--denim:hover {
+  box-shadow: 0 5px #398096;
+  margin-top: -1px;
+}
+
+.button--denim:active {
+  box-shadow: 0 1px #398096;
+  margin-top: 3px;
+}
